@@ -33,7 +33,7 @@ const gameBoard = (() => {
   resetButton.addEventListener("click", () => {
     cells.forEach((cell, index) => {
       cell.innerHTML = "";
-        board[index] = "";
+      board[index] = "";
       cell.disabled = false;
     });
     resultDiv.innerHTML = "";
@@ -64,8 +64,8 @@ const gameBoard = (() => {
     const winner = currentPlayer === player1 ? player2 : player1;
     resultDiv.innerHTML = `Winner: ${winner.name}`;
     cells.forEach((cell) => {
-        cell.disabled = true;
-        });
+      cell.disabled = true;
+    });
   };
 
   const announceTie = () => {
@@ -86,17 +86,22 @@ const gameBoard = (() => {
         return;
       }
 
+      if (board.every((cell) => cell !== "")) {
+        announceTie();
+        return;
+      }
+
       currentPlayer = currentPlayer === player1 ? player2 : player1;
     });
   });
 })();
 
 const gameController = (() => {
-    let currentPlayer;
+  let currentPlayer;
 
-    const startGame = () => {
-        currentPlayer = player1;
-    };
+  const startGame = () => {
+    currentPlayer = player1;
+  };
 
-    return { startGame };
+  return { startGame };
 })();
