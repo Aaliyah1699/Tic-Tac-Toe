@@ -7,6 +7,8 @@ const Player = (name, symbol) => {
 const gameBoard = (() => {
   const board = ["", "", "", "", "", "", "", "", ""];
   let currentPlayer;
+  let gameStarted = false;
+  let playerSelectedSymbol = false;
   const cells = document.querySelectorAll(".cell");
   const resultDiv = document.getElementById("result");
 
@@ -18,7 +20,8 @@ const gameBoard = (() => {
     player1.getSymbol = () => "X";
     player2.getSymbol = () => "O";
     currentPlayer = player1;
-    gameController.startGame();
+    playerSelectedSymbol = true;
+    //gameController.startGame();
   });
 
   const oButton = document.getElementById("oBtn");
@@ -26,7 +29,8 @@ const gameBoard = (() => {
     player1.getSymbol = () => "O";
     player2.getSymbol = () => "X";
     currentPlayer = player1;
-    gameController.startGame();
+    playerSelectedSymbol = true;
+    //gameController.startGame();
   });
 
   const resetButton = document.getElementById("resetBtn");
@@ -37,6 +41,8 @@ const gameBoard = (() => {
       cell.disabled = false;
     });
     resultDiv.innerHTML = "";
+    gameStarted = false;
+    playerSelectedSymbol = false;
   });
 
   const checkWin = () => {
@@ -66,15 +72,23 @@ const gameBoard = (() => {
     cells.forEach((cell) => {
       cell.disabled = true;
     });
+    gameStarted = false;
+    playerSelectedSymbol = false;
   };
 
   const announceTie = () => {
     resultDiv.innerHTML = "It's A Tie!";
+    gameStarted = false;
+    playerSelectedSymbol = false;
   };
 
   cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
-      if (board[index] !== "" || checkWin() || board.every((cell) => cell !== "") {
+      if (
+        board[index] !== "" ||
+        checkWin() ||
+        board.every((cell) => cell !== "")
+      ) {
         return;
       }
 
@@ -84,7 +98,7 @@ const gameBoard = (() => {
       if (checkWin()) {
         announceWinner();
         cells.forEach((cell) => {
-            cell.disabled = true;
+          cell.disabled = true;
         });
         return;
       }
@@ -92,7 +106,7 @@ const gameBoard = (() => {
       if (board.every((cell) => cell !== "")) {
         announceTie();
         cells.forEach((cell) => {
-            cell.disabled = true;
+          cell.disabled = true;
         });
         return;
       }
