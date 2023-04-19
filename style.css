@@ -43,6 +43,8 @@ h1 {
   border: 3px solid #fff;
   margin-right: -1px;
   margin-bottom: -1px;
+  color: #fff;
+  font-size: 3rem;
 }
 .cell:hover {
   border: 5px solid #fff;
