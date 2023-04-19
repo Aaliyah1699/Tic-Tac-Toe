@@ -1,11 +1,7 @@
 const Player = (name, symbol) => {
   const getSymbol = () => symbol;
 
-  return {
-    name,
-    symbol,
-    getSymbol,
-  };
+  return { name, getSymbol: getSymbol };
 };
 
 const gameBoard = (() => {
@@ -14,8 +10,8 @@ const gameBoard = (() => {
   const cells = document.querySelectorAll(".cell");
   const resultDiv = document.getElementById("result");
 
-  const player1 = Player("Player 1", "X");
-  const player2 = Player("Player 2", "O");
+  const player1 = Player("Player 1", "");
+  const player2 = Player("Player 2", "");
 
   const xButton = document.getElementById("xBtn");
   xButton.addEventListener("click", () => {
@@ -41,7 +37,6 @@ const gameBoard = (() => {
       cell.disabled = false;
     });
     resultDiv.innerHTML = "";
-    resultDiv.style.display = "none";
   });
 
   const checkWin = () => {
@@ -68,31 +63,18 @@ const gameBoard = (() => {
   const announceWinner = () => {
     const winner = currentPlayer === player1 ? player2 : player1;
     resultDiv.innerHTML = `Winner: ${winner.name}`;
-    resultDiv.style.display = "block";
-    resultDiv.classList.remove("show-message");
     cells.forEach((cell) => {
       cell.disabled = true;
     });
-    setTimeout(() => {
-      resultDiv.style.display = "none";
-    }, 3000);
   };
 
   const announceTie = () => {
     resultDiv.innerHTML = "It's A Tie!";
-    resultDiv.style.display = "block";
-    resultDiv.classList.remove("show-message");
-    setTimeout(() => {
-      resultDiv.style.display = "none";
-    }, 3000);
-    cells.forEach((cell) => {
-      cell.disabled = true;
-    });
   };
 
   cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
-      if (board[index] !== "" || resultDiv.classList.contains("show-message") || checkWin()) {
+      if (board[index] !== "") {
         return;
       }
 
