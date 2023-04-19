@@ -25,6 +25,7 @@ h1 {
     justify-content: center;
     align-items: center;
     height: 75vh;
+    position: relative;
 }
 .board {
     display: flex;
@@ -56,9 +57,9 @@ button.buttons {
   }
   
 .rightSide {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 .resetBtn {
     margin-top: 0;
