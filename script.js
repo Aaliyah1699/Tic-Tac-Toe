@@ -31,10 +31,12 @@ const gameBoard = (() => {
 
   const resetButton = document.getElementById("resetBtn");
   resetButton.addEventListener("click", () => {
-    cells.forEach((cell) => {
+    cells.forEach((cell, index) => {
       cell.innerHTML = "";
+        board[index] = "";
       cell.disabled = false;
     });
+    resultDiv.innerHTML = "";
   });
 
   const checkWin = () => {
