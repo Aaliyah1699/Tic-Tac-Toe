@@ -69,7 +69,7 @@ const gameBoard = (() => {
     const winner = currentPlayer === player1 ? player2 : player1;
     resultDiv.innerHTML = `Winner: ${winner.name}`;
     resultDiv.style.display = "block";
-    resultDiv.classList.add("show-message");
+    resultDiv.classList.remove("show-message");
     cells.forEach((cell) => {
       cell.disabled = true;
     });
@@ -81,7 +81,7 @@ const gameBoard = (() => {
   const announceTie = () => {
     resultDiv.innerHTML = "It's A Tie!";
     resultDiv.style.display = "block";
-    resultDiv.classList.add("show-message");
+    resultDiv.classList.remove("show-message");
     setTimeout(() => {
       resultDiv.style.display = "none";
     }, 3000);
