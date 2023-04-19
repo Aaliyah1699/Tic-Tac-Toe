@@ -9,6 +9,18 @@ const gameBoard = (() => {
   let currentPlayer;
   const cells = document.querySelectorAll(".cell");
 
+  const player1 = Player("Player 1", "");
+  const player2 = Player("Player 2", "");
+
+  const xButton = document.getElementById("xBtn");
+    xButton.addEventListener('click', () => {
+        player1.symbol = "X";
+        player2.symbol = "O";
+        currentPlayer = player1;
+    });
+
+    
+
   cells.forEach((cell) => {
     cell.addEventListener("click", () => {
       cell.innerHTML = currentPlayer === "X" ? "X" : "O";
