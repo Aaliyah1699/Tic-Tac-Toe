@@ -1,4 +1,11 @@
+const Player = (name, symbol) => {
+
+}
+
 const gameBoard = (() => {
+    const board = ["", "", "", "", "", "", "", "", ""];
+    
+
   const cells = document.querySelectorAll(".cell");
 
   cells.forEach((cell) => {
