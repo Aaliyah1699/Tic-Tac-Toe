@@ -1,7 +1,9 @@
 const Player = (name, symbol) => {
   const getSymbol = () => symbol;
 
-  return { name, getSymbol: getSymbol };
+  return { name, symbol, getSymbol(){
+    return this.symbol
+  } };
 };
 
 const gameBoard = (() => {
