@@ -92,7 +92,7 @@ const gameBoard = (() => {
 
   cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
-      if (board[index] !== "" || resultDiv.classList.contains("show-message")) {
+      if (board[index] !== "" || resultDiv.classList.contains("show-message") || checkWin()) {
         return;
       }
 
