@@ -1,7 +1,7 @@
 const Player = (name, symbol) => {
   const getSymbol = () => symbol;
 
-  return { name, getSymbol };
+  return { name, getSymbol: getSymbol };
 };
 
 const gameBoard = (() => {
