@@ -63,9 +63,13 @@ const gameBoard = (() => {
   const announceWinner = () => {
     const winner = currentPlayer === player1 ? player2 : player1;
     resultDiv.innerHTML = `Winner: ${winner.name}`;
+    resultDiv.style.display = "block";
     cells.forEach((cell) => {
       cell.disabled = true;
     });
+    setTimeout(() => {
+        resultDiv.style.display = "none";
+    }, 3000);
   };
 
   const announceTie = () => {
