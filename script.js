@@ -15,16 +15,16 @@ const gameBoard = (() => {
 
   const xButton = document.getElementById("xBtn");
   xButton.addEventListener("click", () => {
-    player1.symbol = "X";
-    player2.symbol = "O";
+    player1.getSymbol = () => "X";
+    player2.getSymbol = () => "O";
     currentPlayer = player1;
     gameController.startGame();
   });
 
   const oButton = document.getElementById("oBtn");
   oButton.addEventListener("click", () => {
-    player1.symbol = "O";
-    player2.symbol = "X";
+    player1.getSymbol = () => "O";
+    player2.getSymbol = () => "X";
     currentPlayer = player1;
     gameController.startGame();
   });
