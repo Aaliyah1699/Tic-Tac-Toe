@@ -50,6 +50,11 @@ h1 {
     box-shadow: -2px -1px 64px 10px rgba(255,255,0,1);
   }
 
+  button.buttons {
+   background-color: #000;
+   border: none;
+  }
+
 footer {
     background-color: #000;
     color: #fff;
