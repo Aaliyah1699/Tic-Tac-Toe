@@ -1,10 +1,15 @@
-const Player = (name, symbol) => {
+const Player = (name) => {
+  let symbol;
+  const getSymbol = () => symbol;
+  const chooseSymbol = (chooseSymbol) => {
+    symbol = chooseSymbol;
+  };
 
-}
+  return { name, getSymbol, chooseSymbol };
+};
 
 const gameBoard = (() => {
-    const board = ["", "", "", "", "", "", "", "", ""];
-    
+  const board = ["", "", "", "", "", "", "", "", ""];
 
   const cells = document.querySelectorAll(".cell");
 
