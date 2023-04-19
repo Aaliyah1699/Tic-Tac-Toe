@@ -15,9 +15,9 @@ h1 {
     font-size: 3.5rem;
     text-align: center;
     margin: 20px 0;
-    -webkit-box-shadow: -2px -1px 64px 10px rgba(255,255,0,1);
-    -moz-box-shadow: -2px -1px 64px 10px rgba(255,255,0,1);
-    box-shadow: -2px -1px 64px 10px rgba(255,255,0,1);
+    -webkit-box-shadow: -2px -1px 40px 3px rgba(255,255,0,1);
+    -moz-box-shadow: -2px -1px 40px 3px rgba(255,255,0,1);
+    box-shadow: -2px -1px 40px 3px rgba(255,255,0,1);
 }
 .container {
     display: flex;
@@ -45,15 +45,30 @@ h1 {
   }
   .cell:hover {
     border: 5px solid #fff;
-    -webkit-box-shadow: -2px -1px 64px 10px rgba(255,255,0,1);
-    -moz-box-shadow: -2px -1px 64px 10px rgba(255,255,0,1);
-    box-shadow: -2px -1px 64px 10px rgba(255,255,0,1);
+    -webkit-box-shadow: -2px -1px 10px 8px rgba(255,255,0,1);
+    -moz-box-shadow: -2px -1px 10px 8px rgba(255,255,0,1);
+    box-shadow: -2px -1px 10px 8px rgba(255,255,0,1);
   }
 
-  button.buttons {
+button.buttons {
    background-color: #000;
    border: none;
   }
+  
+.rightSide {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+.resetBtn {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+}
+.rightSide {
+     justify-content: flex-end;
+}
 
 footer {
     background-color: #000;
@@ -63,7 +78,7 @@ footer {
     position: fixed;
     bottom: 0;  
     width: 100%;
-    -webkit-box-shadow: -2px -1px 64px 10px rgba(255,255,0,1);
-    -moz-box-shadow: -2px -1px 64px 10px rgba(255,255,0,1);
-    box-shadow: -2px -1px 64px 10px rgba(255,255,0,1);
+    -webkit-box-shadow: -2px -1px 40px 3px rgba(255,255,0,1);
+    -moz-box-shadow: -2px -1px 40px 3px rgba(255,255,0,1);
+    box-shadow: -2px -1px 40px 3px rgba(255,255,0,1);
 }
