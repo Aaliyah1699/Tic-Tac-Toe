@@ -110,6 +110,20 @@ div.btn-container {
   display: none;
 }
 
+.show-message {
+  animation: slide-in 0.5s ease-in-out;
+  color: #fff;
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 footer {
   background-color: #000;
   color: #fff;
