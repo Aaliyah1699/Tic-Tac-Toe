@@ -82,10 +82,7 @@ const gameBoard = (() => {
       board[index] = currentPlayer.getSymbol();
 
       if (checkWin()) {
-        cells.forEach((cell) => {
-          cell.disabled = true;
-        });
-        // TODO add win message
+        announceWinner();
         return;
       }
 
