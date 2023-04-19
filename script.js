@@ -1,9 +1,11 @@
 const Player = (name, symbol) => {
   const getSymbol = () => symbol;
 
-  return { name, symbol, getSymbol(){
-    return this.symbol
-  } };
+  return {
+    name,
+    symbol,
+    getSymbol,
+  };
 };
 
 const gameBoard = (() => {
@@ -12,8 +14,8 @@ const gameBoard = (() => {
   const cells = document.querySelectorAll(".cell");
   const resultDiv = document.getElementById("result");
 
-  const player1 = Player("Player 1", "");
-  const player2 = Player("Player 2", "");
+  const player1 = Player("Player 1", "X");
+  const player2 = Player("Player 2", "O");
 
   const xButton = document.getElementById("xBtn");
   xButton.addEventListener("click", () => {
