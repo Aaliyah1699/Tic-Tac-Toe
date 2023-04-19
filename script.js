@@ -36,31 +36,45 @@ const gameBoard = (() => {
 
   const checkWin = () => {
     const winCombo = [
-        [0, 1, 2], [3, 4, 5], [6, 7, 8], // horizontal
-        [0, 3, 6], [1, 4, 7], [2, 5, 8], // vertical
-        [0, 4, 8], [2, 4, 6] // diagonal
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8], // horizontal
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8], // vertical
+      [0, 4, 8],
+      [2, 4, 6], // diagonal
     ];
 
     for (let i = 0; i < winCombo.length; i++) {
-        const [a, b, c] = winCombo[i];
-        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-            return true;
-        }
+      const [a, b, c] = winCombo[i];
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        return true;
+      }
     }
     return false;
-  }
+  };
 
-  cells.forEach((cell) => {
+  cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
-      cell.innerHTML = currentPlayer.getSymbol();
+      if (board[index] !== "") {
+        return;
+      }
 
-      cell.disabled = true;
+      cell.innerHTML = currentPlayer.getSymbol();
+      board[index] = currentPlayer.getSymbol();
+
+      if (checkWin()) {
+        cells.forEach((cell) => {
+          cell.disabled = true;
+        });
+        // TODO add win message
+        return;
+      }
 
       currentPlayer = currentPlayer === player1 ? player2 : player1;
     });
   });
 })();
 
-const gameController = (() => {
-
-})();
+const gameController = (() => {})();
