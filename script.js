@@ -37,6 +37,7 @@ const gameBoard = (() => {
       cell.disabled = false;
     });
     resultDiv.innerHTML = "";
+    resultDiv.style.display = "none";
   });
 
   const checkWin = () => {
