@@ -17,6 +17,7 @@ const gameBoard = (() => {
     player1.symbol = "X";
     player2.symbol = "O";
     currentPlayer = player1;
+    gameController.startGame();
   });
 
   const oButton = document.getElementById("oBtn");
@@ -24,6 +25,7 @@ const gameBoard = (() => {
     player1.symbol = "O";
     player2.symbol = "X";
     currentPlayer = player1;
+    gameController.startGame();
   });
 
   const resetButton = document.getElementById("resetBtn");
@@ -77,4 +79,12 @@ const gameBoard = (() => {
   });
 })();
 
-const gameController = (() => {})();
+const gameController = (() => {
+    let currentPlayer;
+
+    const startGame = () => {
+        currentPlayer = player1;
+    };
+
+    return { startGame };
+})();
