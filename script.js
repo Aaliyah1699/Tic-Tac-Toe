@@ -60,6 +60,14 @@ const gameBoard = (() => {
     return false;
   };
 
+  const announceWinner = () => {
+    const winner = currentPlayer === player1 ? player2 : player1;
+    resultDiv.innerHTML = `Winner: ${winner.name}`;
+    cells.forEach((cell) => {
+        cell.disabled = true;
+        });
+  };
+
   cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
       if (board[index] !== "") {
