@@ -106,6 +106,42 @@ div.btn-container {
   justify-content: flex-end;
 }
 
+.result {
+  position: fixed;
+  color: #fff;
+  background-color: #000;
+  font-size: 2rem;
+  padding: 10px;
+  z-index: 9999;
+  left: -200px;
+  animation: showResult 1s forwards;
+  transform: translate(-50%, -50%);
+}
+@keyframes showResult {
+  0% {
+    left: -200px;
+  }
+  50% {
+    left: 50px;
+  }
+  100% {
+    left: 0;
+  }
+}
+.hideResult {
+  animation: hideResult 0.5s forwards;
+}
+@keyframes hideResult {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 50px;
+  }
+  100% {
+    left: -200px;
+  }
+}
 footer {
   background-color: #000;
   color: #fff;
