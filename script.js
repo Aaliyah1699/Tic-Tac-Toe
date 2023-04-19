@@ -65,25 +65,30 @@ const gameBoard = (() => {
     const winner = currentPlayer === player1 ? player2 : player1;
     resultDiv.innerHTML = `Winner: ${winner.name}`;
     resultDiv.style.display = "block";
+    resultDiv.classList.add("show-message");
     cells.forEach((cell) => {
       cell.disabled = true;
     });
     setTimeout(() => {
-        resultDiv.style.display = "none";
+      resultDiv.style.display = "none";
     }, 3000);
   };
 
   const announceTie = () => {
     resultDiv.innerHTML = "It's A Tie!";
     resultDiv.style.display = "block";
+    resultDiv.classList.add("show-message");
     setTimeout(() => {
       resultDiv.style.display = "none";
     }, 3000);
+    cells.forEach((cell) => {
+      cell.disabled = true;
+    });
   };
 
   cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
-      if (board[index] !== "") {
+      if (board[index] !== "" || resultDiv.classList.contains("show-message")) {
         return;
       }
 
