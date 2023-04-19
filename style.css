@@ -61,6 +61,21 @@ button.buttons {
     top: 0;
     right: 0;
   }
+div.btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10%;
+    height: 60%;
+    margin: 150px 200px 0 0;
+}
+.btn-container button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+}
+
 .resetBtn {
     margin-top: 0;
     margin-bottom: 10px;
