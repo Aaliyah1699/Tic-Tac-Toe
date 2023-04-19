@@ -2,11 +2,11 @@ Planning
 
 🌕What I want on the page 
 ---------------------------------------------------
-Title-> Tic Tac Toe
-Footer-> My name
-Board-> Middle of page or to left or right
-side of board-> X or O
-reset button
+Title-> Tic Tac Toe✅
+Footer-> My name✅
+Board-> Middle of page✅ or to left or right
+side of board-> X or O✅
+reset button✅
 -----------------------------------------------------
 🌖Known needs
 --------------------------------------------------------
