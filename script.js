@@ -8,6 +8,7 @@ const gameBoard = (() => {
   const board = ["", "", "", "", "", "", "", "", ""];
   let currentPlayer;
   const cells = document.querySelectorAll(".cell");
+  const resultDiv = document.getElementById("result");
 
   const player1 = Player("Player 1", "");
   const player2 = Player("Player 2", "");
