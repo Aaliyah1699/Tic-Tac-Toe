@@ -26,6 +26,14 @@ const gameBoard = (() => {
     currentPlayer = player1;
   });
 
+  const resetButton = document.getElementById("resetBtn");
+  resetButton.addEventListener("click", () => {
+    cells.forEach((cell) => {
+      cell.innerHTML = "";
+      cell.disabled = false;
+    });
+  });
+
   cells.forEach((cell) => {
     cell.addEventListener("click", () => {
       cell.innerHTML = currentPlayer.getSymbol();
