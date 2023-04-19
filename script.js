@@ -74,7 +74,7 @@ const gameBoard = (() => {
 
   cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
-      if (board[index] !== "") {
+      if (board[index] !== "" || checkWin() || board.every((cell) => cell !== "") {
         return;
       }
 
@@ -83,11 +83,17 @@ const gameBoard = (() => {
 
       if (checkWin()) {
         announceWinner();
+        cells.forEach((cell) => {
+            cell.disabled = true;
+        });
         return;
       }
 
       if (board.every((cell) => cell !== "")) {
         announceTie();
+        cells.forEach((cell) => {
+            cell.disabled = true;
+        });
         return;
       }
 
