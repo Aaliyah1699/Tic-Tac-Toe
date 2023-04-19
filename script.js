@@ -75,6 +75,10 @@ const gameBoard = (() => {
 
   const announceTie = () => {
     resultDiv.innerHTML = "It's A Tie!";
+    resultDiv.style.display = "block";
+    setTimeout(() => {
+      resultDiv.style.display = "none";
+    }, 3000);
   };
 
   cells.forEach((cell, index) => {
