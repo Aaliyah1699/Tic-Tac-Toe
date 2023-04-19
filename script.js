@@ -28,11 +28,11 @@ const gameBoard = (() => {
 
   cells.forEach((cell) => {
     cell.addEventListener("click", () => {
-      cell.innerHTML = currentPlayer === "X" ? "X" : "O";
+      cell.innerHTML = currentPlayer.getSymbol();
 
       cell.disabled = true;
 
-      currentPlayer = currentPlayer === "X" ? "O" : "X";
+      currentPlayer = currentPlayer === player1 ? player2 : player1;
     });
   });
 })();
