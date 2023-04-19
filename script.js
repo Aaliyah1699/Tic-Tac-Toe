@@ -68,6 +68,10 @@ const gameBoard = (() => {
         });
   };
 
+  const announceTie = () => {
+    resultDiv.innerHTML = "It's A Tie!";
+  };
+
   cells.forEach((cell, index) => {
     cell.addEventListener("click", () => {
       if (board[index] !== "") {
