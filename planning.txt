@@ -24,8 +24,6 @@ reset button✅
 🌔How I want the game to work
 ----------------------------------------------------
 -> want user to chose either X or O by clicking on the option
--> 2 player options on opposite of board
--> player one is X and goes first even if user picks O
 ->when they chose the letter they want and click on one of the boxes that letter will sit inside the box
 -> once one gets three in a row no more boxes can be filled 
 -> if neither wins a tie announcement pops up on screen
@@ -36,4 +34,3 @@ reset button✅
 🌓Later
 --------------------------------------------------------
 ⭐️(going to add AI to game later to play with computer)⭐️
--> give option to play with ai or 2 players
