@@ -34,3 +34,11 @@ reset button✅
 🌓Later
 --------------------------------------------------------
 ⭐️(going to add AI to game later to play with computer)⭐️
+-> When player 1 (user) choses X or O player 2 (AI) will automatically be the other 
+-> Player 1 (user) goes first and marks the cell they want 
+-> after Player 2 (AI) will automatically click/ pick a random cell that is not taken and mark that cell
+-> If player 1 (user) gets 3 in a row no more cells can be picked and player 2 (AI) will not be able to pick another cell and the game will end and winners announced
+-> Same when reversed
+-> If neither player 1 or player 2 gets 3 in a row then it's a tie and the tie message will show 
+-> when the game is reset AI will wait until player 1 makes a move
+
