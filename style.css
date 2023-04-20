@@ -112,15 +112,12 @@ div.btn-container {
 .show {
   display: block !important;
 }
-#result p {
-  font-size: 3rem;
-  font-weight: bold;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
+#result {
+  font-weight: bolder;
   color: #fff;
   border-radius: 10px;
   display: inline-block;
-  animation: jump 0.3s ease-in-out;
+  animation: jump 0.5s ease-in-out;
   animation-iteration-count: 1;
 }
 #result {
@@ -129,6 +126,11 @@ div.btn-container {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  background-color: black;
+  font-size: 5rem;
+  -webkit-box-shadow: 0px -18px 46px -5px rgba(255, 255, 0, 0.66);
+  -moz-box-shadow: 0px -18px 46px -5px rgba(255, 255, 0, 0.66);
+  box-shadow: 0px -18px 46px -5px rgba(255, 255, 0, 0.66);
 }
 .win-message-container,
 .tie-message-container {
@@ -144,7 +146,7 @@ div.btn-container {
 .win-message-container.show,
 .tie-message-container.show {
   display: block;
-  animation: jump 0.5s;
+  animation: jump 0.2s;
 }
 @keyframes jump {
   0% {
