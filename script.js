@@ -48,6 +48,7 @@ const gameBoard = (() => {
     aiPlay.getSymbol = () => "O";
     currentPlayer = player1;
     playerSelectedSymbol = true;
+    gameStarted = true;
     gameController.startGame();
   });
 
@@ -57,6 +58,7 @@ const gameBoard = (() => {
     aiPlay.getSymbol = () => "X";
     currentPlayer = player1;
     playerSelectedSymbol = true;
+    gameStarted = true;
     gameController.startGame();
   });
 
@@ -166,6 +168,24 @@ const gameBoard = (() => {
       }
 
       currentPlayer = currentPlayer === player1 ? aiPlay : player1;
+
+      if (currentPlayer === aiPlay && gameStarted) {
+        currentPlayer = aiPlay;
+        const aiMove = aiPlay.makeMove(board);
+        cells[aiMove].innerHTML = aiPlay.getSymbol();
+        if (checkWin()) {
+          announceWinner(currentPlayer);
+          cells.forEach((cell) => {
+            cell.disabled = true;
+          });
+          return;
+        }
+        if (board.every((cell) => cell !== "")) {
+          announceTie();
+          return;
+        }
+        currentPlayer = player1;
+      }
     });
   });
   return {
