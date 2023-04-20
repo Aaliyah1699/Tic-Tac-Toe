@@ -65,21 +65,37 @@ const gameBoard = (() => {
     }
     return false;
   };
+  const showMessage = (message) => {
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = message;
+    resultDiv.classList.add("show");
+    setTimeout(() => {
+      resultDiv.classList.remove("show");
+    }, 4000);
+  };
 
   const announceWinner = () => {
     const winner = currentPlayer === player1 ? player2 : player1;
     resultDiv.innerHTML = `Winner: ${winner.name}!`;
+    resultDiv.classList.add("show");
     cells.forEach((cell) => {
       cell.disabled = true;
     });
     gameStarted = false;
     playerSelectedSymbol = false;
+    setTimeout(() => {
+      resultDiv.classList.remove("show");
+    }, 4000);
   };
 
   const announceTie = () => {
     resultDiv.innerHTML = "It's A Tie!";
+    resultDiv.classList.add("show");
     gameStarted = false;
     playerSelectedSymbol = false;
+    setTimeout(() => {
+      resultDiv.classList.remove("show");
+    }, 4000);
   };
 
   cells.forEach((cell, index) => {
