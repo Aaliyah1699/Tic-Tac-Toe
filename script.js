@@ -1,9 +1,11 @@
+//Factory functions to create player objects
 const Player = (name, symbol) => {
   const getSymbol = () => symbol;
 
   return { name, getSymbol: getSymbol };
 };
 
+// Module pattern to create game board
 const gameBoard = (() => {
   const board = ["", "", "", "", "", "", "", "", ""];
   let currentPlayer;
@@ -12,9 +14,10 @@ const gameBoard = (() => {
   const cells = document.querySelectorAll(".cell");
   const resultDiv = document.getElementById("result");
 
-  const player1 = Player("Player 1", "");
-  const player2 = Player("Player 2", "");
+  const player1 = Player("Player", "");
+  const player2 = Player("Player", "");
 
+  // Button event listeners to select symbol and start the game
   const xButton = document.getElementById("xBtn");
   xButton.addEventListener("click", () => {
     player1.getSymbol = () => "X";
@@ -66,29 +69,34 @@ const gameBoard = (() => {
     }
     return false;
   };
-  const winMessage = document.getElementById("win-message");
-  const tieMessage = document.getElementById("tie-message");
+  // const winMessage = document.getElementById("win-message");
+  // const tieMessage = document.getElementById("tie-message");
+
   const showMessage = (message, isWin) => {
     const messageContainer = isWin
       ? document.getElementById("win-message-container")
       : document.getElementById("tie-message-container");
     if (messageContainer) {
-      const messageElement = messageContainer.getElementsByClassName("message");
-      messageElement.innerHTML = message;
+      const messageElement =
+        messageContainer.querySelector(".message");
+      messageElement.textContent = message;
       messageContainer.classList.add("show");
-      resultDiv.innerHTML = message;
-      resultDiv.classList.add("show");
+      //resultDiv.innerHTML = message;
+      //resultDiv.classList.add("show");
       setTimeout(() => {
-        resultDiv.classList.remove("show");
+       // resultDiv.classList.remove("show");
         messageContainer.classList.remove("show");
-      }, 4000);
+      });
     }
   };
 
-  const announceWinner = () => {
-    const winner = currentPlayer === player1 ? player2 : player1;
-    const message = ` ${winner.name} (${winner.getSymbol()}) wins!`;
-    showMessage(message, true);
+  const announceWinner = (currentPlayer) => {
+    const winnerSymbol = currentPlayer ? currentPlayer.getSymbol() : "";
+    const message = winnerSymbol
+      ? ` ${currentPlayer.name} ${winnerSymbol} wins!`
+      : "It's A Tie!";
+    //showMessage(message, true);
+    resultDiv.innerHTML = message;
     resultDiv.classList.add("show");
     cells.forEach((cell) => {
       cell.disabled = true;
@@ -97,13 +105,15 @@ const gameBoard = (() => {
     playerSelectedSymbol = false;
     setTimeout(() => {
       resultDiv.classList.remove("show");
-    }, 4000);
+    });
   };
 
   const announceTie = () => {
-    const message = "It's A Tie!";
-    showMessage(message, false);
+    resultDiv.innerHTML = "It's A Tie!";
     resultDiv.classList.add("show");
+    cells.forEach((cell) => {
+      cell.disabled = true;
+    });
     gameStarted = false;
     playerSelectedSymbol = false;
     setTimeout(() => {
@@ -125,10 +135,7 @@ const gameBoard = (() => {
       board[index] = currentPlayer.getSymbol();
 
       if (checkWin()) {
-        announceWinner();
-        if (isWin) {
-          document.getElementById("win-message").classList.add("show");
-        }
+        announceWinner(currentPlayer);
         cells.forEach((cell) => {
           cell.disabled = true;
         });
@@ -137,16 +144,14 @@ const gameBoard = (() => {
 
       if (board.every((cell) => cell !== "")) {
         announceTie();
-        if (checkWin()) {
-          document.getElementById("tie-message").classList.add("show");
-        }
-        cells.forEach((cell) => {
-          cell.disabled = true;
-        });
+        // cells.forEach((cell) => {
+        //   cell.disabled = true;
+        // });
         return;
       }
 
       currentPlayer = currentPlayer === player1 ? player2 : player1;
+      
     });
   });
   return {
