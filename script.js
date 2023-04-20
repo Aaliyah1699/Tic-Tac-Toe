@@ -39,13 +39,13 @@ const gameBoard = (() => {
   const resultDiv = document.getElementById("result");
 
   const player1 = Player("Player", "");
-  const player2 = Player("Player", "");
+  const aiPlay = Player("AI", "");
 
   // Button event listeners to select symbol and start the game
   const xButton = document.getElementById("xBtn");
   xButton.addEventListener("click", () => {
     player1.getSymbol = () => "X";
-    player2.getSymbol = () => "O";
+    aiPlay.getSymbol = () => "O";
     currentPlayer = player1;
     playerSelectedSymbol = true;
     gameController.startGame();
@@ -54,7 +54,7 @@ const gameBoard = (() => {
   const oButton = document.getElementById("oBtn");
   oButton.addEventListener("click", () => {
     player1.getSymbol = () => "O";
-    player2.getSymbol = () => "X";
+    aiPlay.getSymbol = () => "X";
     currentPlayer = player1;
     playerSelectedSymbol = true;
     gameController.startGame();
@@ -165,7 +165,7 @@ const gameBoard = (() => {
         return;
       }
 
-      currentPlayer = currentPlayer === player1 ? player2 : player1;
+      currentPlayer = currentPlayer === player1 ? aiPlay : player1;
     });
   });
   return {
@@ -173,7 +173,7 @@ const gameBoard = (() => {
     currentPlayer,
     playerSelectedSymbol,
     player1,
-    player2,
+    aiPlay,
     cells,
     checkWin,
     announceWinner,
