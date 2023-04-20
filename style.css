@@ -106,8 +106,18 @@ div.btn-container {
   justify-content: flex-end;
 }
 
-.result {
+.hidden {
   display: none;
+}
+#win-message,
+#tie-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: transparent;
+  text-align: center;
 }
 
 .show-message {
