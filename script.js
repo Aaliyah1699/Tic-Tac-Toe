@@ -10,7 +10,6 @@ const gameBoard = (() => {
   let gameStarted = false;
   let playerSelectedSymbol = false;
   const cells = document.querySelectorAll(".cell");
-  const resultDiv = document.getElementById("result");
 
   const player1 = Player("Player 1", "");
   const player2 = Player("Player 2", "");
@@ -21,7 +20,7 @@ const gameBoard = (() => {
     player2.getSymbol = () => "O";
     currentPlayer = player1;
     playerSelectedSymbol = true;
-    //gameController.startGame();
+    gameController.startGame();
   });
 
   const oButton = document.getElementById("oBtn");
@@ -30,7 +29,7 @@ const gameBoard = (() => {
     player2.getSymbol = () => "X";
     currentPlayer = player1;
     playerSelectedSymbol = true;
-    //gameController.startGame();
+    gameController.startGame();
   });
 
   const resetButton = document.getElementById("resetBtn");
@@ -67,25 +66,28 @@ const gameBoard = (() => {
   };
   const winMessage = document.getElementById("win-message");
   const tieMessage = document.getElementById("tie-message");
-  const showMessage = (message, isWin) => {
+  const showMessage = (message, isWin, resultDiv) => {
     const resultDiv = document.getElementById("result");
     const messageContainer = isWin
       ? document.getElementById("win-message")
       : document.getElementById("tie-message");
-    const messageElement = messageContainer.querySelector(".message");
-    messageElement.innerHTML = message;
-    messageContainer.classList.add("show");
-    resultDiv.innerHTML = message;
-    resultDiv.classList.add("show");
-    setTimeout(() => {
-      resultDiv.classList.remove("show");
-    }, 4000);
+    if (messageContainer) {
+      const messageElement = messageContainer.querySelector(".message");
+      messageElement.innerHTML = message;
+      messageContainer.classList.add("show");
+      resultDiv.innerHTML = message;
+      resultDiv.classList.add("show");
+      setTimeout(() => {
+        resultDiv.classList.remove("show");
+        messageContainer.classList.remove("show");
+      }, 4000);
+    }
   };
 
   const announceWinner = () => {
     const winner = currentPlayer === player1 ? player2 : player1;
     const message = `Player ${winner.name} (${winner.getSymbol()}) wins!`;
-    showMessage(message, true);
+    showMessage(message, true, resultDiv);
     resultDiv.classList.add("show");
     cells.forEach((cell) => {
       cell.disabled = true;
@@ -99,7 +101,7 @@ const gameBoard = (() => {
 
   const announceTie = () => {
     const message = "It's A Tie!";
-    showMessage(message, false);
+    showMessage(message, false, resultDiv);
     resultDiv.classList.add("show");
     gameStarted = false;
     playerSelectedSymbol = false;
