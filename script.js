@@ -69,22 +69,16 @@ const gameBoard = (() => {
     }
     return false;
   };
-  // const winMessage = document.getElementById("win-message");
-  // const tieMessage = document.getElementById("tie-message");
-
+  // announce winner or tie
   const showMessage = (message, isWin) => {
     const messageContainer = isWin
       ? document.getElementById("win-message-container")
       : document.getElementById("tie-message-container");
     if (messageContainer) {
-      const messageElement =
-        messageContainer.querySelector(".message");
+      const messageElement = messageContainer.querySelector(".message");
       messageElement.textContent = message;
       messageContainer.classList.add("show");
-      //resultDiv.innerHTML = message;
-      //resultDiv.classList.add("show");
       setTimeout(() => {
-       // resultDiv.classList.remove("show");
         messageContainer.classList.remove("show");
       });
     }
@@ -95,7 +89,7 @@ const gameBoard = (() => {
     const message = winnerSymbol
       ? ` ${currentPlayer.name} ${winnerSymbol} wins!`
       : "It's A Tie!";
-    //showMessage(message, true);
+
     resultDiv.innerHTML = message;
     resultDiv.classList.add("show");
     cells.forEach((cell) => {
@@ -144,14 +138,10 @@ const gameBoard = (() => {
 
       if (board.every((cell) => cell !== "")) {
         announceTie();
-        // cells.forEach((cell) => {
-        //   cell.disabled = true;
-        // });
         return;
       }
 
       currentPlayer = currentPlayer === player1 ? player2 : player1;
-      
     });
   });
   return {
