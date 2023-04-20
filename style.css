@@ -109,21 +109,25 @@ div.btn-container {
 .hidden {
   display: none;
 }
-#win-message,
-#tie-message {
-  position: absolute;
+.result p {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border-radius: 10px;
+  display: inline-block;
+  animation: message-anim 0.5s ease-out;
+}
+.result {
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
-  background-color: transparent;
-  text-align: center;
-}
-#win-message h2, #tie-message h2 {
-  font-size: 3rem;
-  color: #fff;
-  font-weight: bold;
-  text-shadow: 2px 2px #000;
+  z-index: 999;
+  display: none;
 }
 
 .show-message {
