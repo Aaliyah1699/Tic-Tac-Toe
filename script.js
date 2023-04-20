@@ -65,6 +65,8 @@ const gameBoard = (() => {
     }
     return false;
   };
+  const winMessage = document.getElementById("win-message");
+  const tieMessage = document.getElementById("tie-message");
   const showMessage = (message) => {
     const resultDiv = document.getElementById("result");
     resultDiv.innerHTML = message;
@@ -76,7 +78,7 @@ const gameBoard = (() => {
 
   const announceWinner = () => {
     const winner = currentPlayer === player1 ? player2 : player1;
-    showMessage(`Winner: ${winner.name}!`);
+    showMessage(winMessage);
     resultDiv.classList.add("show");
     cells.forEach((cell) => {
       cell.disabled = true;
@@ -89,7 +91,7 @@ const gameBoard = (() => {
   };
 
   const announceTie = () => {
-    showMessage("It's A Tie!");
+    showMessage(tieMessage);
     resultDiv.classList.add("show");
     gameStarted = false;
     playerSelectedSymbol = false;
