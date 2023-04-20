@@ -130,18 +130,15 @@ div.btn-container {
   display: none;
 }
 
-.show-message {
-  animation: slide-in 0.5s ease-in-out;
-  color: #fff;
-}
-@keyframes slide-in {
-  from {
-    transform: translateX(-50%);
-    opacity: 0;
+@keyframes message-anim {
+  0% {
+    transform: translateY(-100%);
   }
-  to {
-    transform: translateX(0);
-    opacity: 1;
+  50% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0%);
   }
 }
 footer {
