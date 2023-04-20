@@ -21,7 +21,10 @@ const aiPlayer = (name, symbol) => {
   };
 
   const makeMove = (board) => {
-    const index = getRandomAvailableCell(board);
+    let index;
+    do {
+      index = getRandomAvailableCell(board);
+    } while (board[index] !== "");
     board[index] = getSymbol();
     return index;
   };
