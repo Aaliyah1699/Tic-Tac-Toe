@@ -72,7 +72,7 @@ const gameBoard = (() => {
       ? document.getElementById("win-message")
       : document.getElementById("tie-message");
     if (messageContainer) {
-      const messageElement = messageContainer.querySelector(".message");
+      const messageElement = messageContainer.getElementsByClassName("message");
       messageElement.innerHTML = message;
       messageContainer.classList.add("show");
       resultDiv.innerHTML = message;
@@ -126,7 +126,7 @@ const gameBoard = (() => {
       if (checkWin()) {
         announceWinner();
         if (winner) {
-          document.querySelector("#win-message").classList.add("show");
+          document.getElementById("win-message").classList.add("show");
         }
         cells.forEach((cell) => {
           cell.disabled = true;
@@ -137,7 +137,7 @@ const gameBoard = (() => {
       if (board.every((cell) => cell !== "")) {
         announceTie();
         if (isTie) {
-          document.querySelector("#tie-message").classList.add("show");
+          document.getElementById("tie-message").classList.add("show");
         }
         cells.forEach((cell) => {
           cell.disabled = true;
