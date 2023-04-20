@@ -68,7 +68,7 @@ const gameBoard = (() => {
 
   const announceWinner = () => {
     const winner = currentPlayer === player1 ? player2 : player1;
-    resultDiv.innerHTML = `Winner: ${winner.name}`;
+    resultDiv.innerHTML = `Winner: ${winner.name}!`;
     cells.forEach((cell) => {
       cell.disabled = true;
     });
