@@ -67,8 +67,14 @@ const gameBoard = (() => {
   };
   const winMessage = document.getElementById("win-message");
   const tieMessage = document.getElementById("tie-message");
-  const showMessage = (message) => {
+  const showMessage = (message, isWin) => {
     const resultDiv = document.getElementById("result");
+    const messageContainer = isWin
+      ? document.getElementById("win-message")
+      : document.getElementById("tie-message");
+    const messageElement = messageContainer.querySelector(".message");
+    messageElement.innerHTML = message;
+    messageContainer.classList.add("show");
     resultDiv.innerHTML = message;
     resultDiv.classList.add("show");
     setTimeout(() => {
@@ -78,6 +84,7 @@ const gameBoard = (() => {
 
   const announceWinner = () => {
     const winner = currentPlayer === player1 ? player2 : player1;
+
     showMessage(winMessage);
     resultDiv.classList.add("show");
     cells.forEach((cell) => {
