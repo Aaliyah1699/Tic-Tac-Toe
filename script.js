@@ -39,7 +39,7 @@ const gameBoard = (() => {
   const resultDiv = document.getElementById("result");
 
   const player1 = Player("Player", "");
-  const aiPlay = Player("AI", "");
+  const aiPlay = aiPlayer("AI", "");
 
   // Button event listeners to select symbol and start the game
   const xButton = document.getElementById("xBtn");
