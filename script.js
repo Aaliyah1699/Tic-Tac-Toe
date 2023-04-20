@@ -10,6 +10,7 @@ const gameBoard = (() => {
   let gameStarted = false;
   let playerSelectedSymbol = false;
   const cells = document.querySelectorAll(".cell");
+  const resultDiv = document.getElementById("result");
 
   const player1 = Player("Player 1", "");
   const player2 = Player("Player 2", "");
@@ -32,7 +33,7 @@ const gameBoard = (() => {
     gameController.startGame();
   });
 
-  const resetButton = document.getElementById("resetBtn");
+  resetButton = document.getElementById("resetBtn");
   resetButton.addEventListener("click", () => {
     cells.forEach((cell, index) => {
       cell.innerHTML = "";
@@ -66,8 +67,7 @@ const gameBoard = (() => {
   };
   const winMessage = document.getElementById("win-message");
   const tieMessage = document.getElementById("tie-message");
-  const showMessage = (message, isWin, resultDiv) => {
-    const resultDiv = document.getElementById("result");
+  const showMessage = (message, isWin) => {
     const messageContainer = isWin
       ? document.getElementById("win-message")
       : document.getElementById("tie-message");
@@ -87,7 +87,7 @@ const gameBoard = (() => {
   const announceWinner = () => {
     const winner = currentPlayer === player1 ? player2 : player1;
     const message = `Player ${winner.name} (${winner.getSymbol()}) wins!`;
-    showMessage(message, true, resultDiv);
+    showMessage(message, true);
     resultDiv.classList.add("show");
     cells.forEach((cell) => {
       cell.disabled = true;
@@ -101,7 +101,7 @@ const gameBoard = (() => {
 
   const announceTie = () => {
     const message = "It's A Tie!";
-    showMessage(message, false, resultDiv);
+    showMessage(message, false);
     resultDiv.classList.add("show");
     gameStarted = false;
     playerSelectedSymbol = false;
@@ -125,6 +125,9 @@ const gameBoard = (() => {
 
       if (checkWin()) {
         announceWinner();
+        if (winner) {
+          document.querySelector("#win-message").classList.add("show");
+        }
         cells.forEach((cell) => {
           cell.disabled = true;
         });
@@ -133,6 +136,9 @@ const gameBoard = (() => {
 
       if (board.every((cell) => cell !== "")) {
         announceTie();
+        if (isTie) {
+          document.querySelector("#tie-message").classList.add("show");
+        }
         cells.forEach((cell) => {
           cell.disabled = true;
         });
@@ -142,14 +148,27 @@ const gameBoard = (() => {
       currentPlayer = currentPlayer === player1 ? player2 : player1;
     });
   });
+  return {
+    board,
+    currentPlayer,
+    playerSelectedSymbol,
+    player1,
+    player2,
+    cells,
+    checkWin,
+    announceWinner,
+    announceTie,
+  };
 })();
 
 const gameController = (() => {
   let currentPlayer;
 
   const startGame = () => {
-    currentPlayer = player1;
+    gameBoard.currentPlayer = gameBoard.player1;
+    currentPlayer = gameBoard.currentPlayer;
   };
 
   return { startGame };
 })();
+gameController.startGame();

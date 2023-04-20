@@ -109,7 +109,10 @@ div.btn-container {
 .hidden {
   display: none;
 }
-.result p {
+.show {
+  display: block !important;
+}
+#result p {
   font-size: 3rem;
   font-weight: bold;
   padding: 20px;
@@ -120,7 +123,7 @@ div.btn-container {
   animation: jump 0.3s ease-in-out;
   animation-iteration-count: 1;
 }
-.result {
+#result {
   position: absolute;
   top: 50%;
   left: 50%;
