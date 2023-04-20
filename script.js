@@ -41,6 +41,7 @@ const gameBoard = (() => {
       cell.disabled = false;
     });
     resultDiv.innerHTML = "";
+    resultDiv.classList.remove("show");
     gameStarted = false;
     playerSelectedSymbol = false;
   });
@@ -136,7 +137,7 @@ const gameBoard = (() => {
 
       if (board.every((cell) => cell !== "")) {
         announceTie();
-        if (isTie) {
+        if (checkWin()) {
           document.getElementById("tie-message").classList.add("show");
         }
         cells.forEach((cell) => {
