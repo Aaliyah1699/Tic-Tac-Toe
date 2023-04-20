@@ -110,24 +110,38 @@ div.btn-container {
   display: none;
 }
 .result p {
-  font-size: 50px;
+  font-size: 3rem;
   font-weight: bold;
-  text-align: center;
-  margin: 0;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
   border-radius: 10px;
   display: inline-block;
-  animation: message-anim 0.5s ease-out;
+  animation: jump 0.3s ease-in-out;
+  animation-iteration-count: 1;
 }
 .result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.win-message-container,
+.tie-message-container {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999;
+  z-index: 100;
   display: none;
+  text-align: center;
+}
+
+.win-message-container.show,
+.tie-message-container.show {
+  display: block;
+  animation: jump 0.5s;
 }
 @keyframes jump {
   0% {
