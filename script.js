@@ -76,7 +76,7 @@ const gameBoard = (() => {
 
   const announceWinner = () => {
     const winner = currentPlayer === player1 ? player2 : player1;
-    resultDiv.innerHTML = `Winner: ${winner.name}!`;
+    showMessage(`Winner: ${winner.name}!`);
     resultDiv.classList.add("show");
     cells.forEach((cell) => {
       cell.disabled = true;
@@ -89,7 +89,7 @@ const gameBoard = (() => {
   };
 
   const announceTie = () => {
-    resultDiv.innerHTML = "It's A Tie!";
+    showMessage("It's A Tie!");
     resultDiv.classList.add("show");
     gameStarted = false;
     playerSelectedSymbol = false;
