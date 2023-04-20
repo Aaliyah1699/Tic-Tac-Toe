@@ -5,6 +5,30 @@ const Player = (name, symbol) => {
   return { name, getSymbol: getSymbol };
 };
 
+// AI player
+const aiPlayer = (name, symbol) => {
+  const getSymbol = () => symbol;
+
+  const getRandomAvailableCell = (board) => {
+    const availableCells = [];
+    board.forEach((cell, index) => {
+      if (cell === "") {
+        availableCells.push(index);
+      }
+    });
+    const randomIndex = Math.floor(Math.random() * availableCells.length);
+    return availableCells[randomIndex];
+  };
+
+  const makeMove = (board) => {
+    const index = getRandomAvailableCell(board);
+    board[index] = getSymbol();
+    return index;
+  };
+
+  return { name, getSymbol: getSymbol, makeMove: makeMove };
+};
+
 // Module pattern to create game board
 const gameBoard = (() => {
   const board = ["", "", "", "", "", "", "", "", ""];
