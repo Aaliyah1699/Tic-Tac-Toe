@@ -129,18 +129,28 @@ div.btn-container {
   z-index: 999;
   display: none;
 }
-
-@keyframes message-anim {
+@keyframes jump {
   0% {
-    transform: translateY(-100%);
+    transform: translate(-50%, -50%) scale(1);
   }
-  50% {
-    transform: translateY(10%);
+  20% {
+    transform: translate(-50%, -60%) scale(1.1);
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  60% {
+    transform: translate(-50%, -40%) scale(1.1);
+  }
+  80% {
+    transform: translate(-50%, -50%) scale(1);
   }
   100% {
-    transform: translateY(0%);
+    transform: translate(-50%, -50%) scale(1);
   }
 }
+
+
 footer {
   background-color: #000;
   color: #fff;
