@@ -1,13 +1,12 @@
 //Factory functions to create player objects
 const Player = (name, symbol) => {
-  const getSymbol = () => symbol;
-
-  return { name, getSymbol: getSymbol };
+  //const getSymbol = () => symbol;
+  return { name, symbol };
 };
 
 // AI player
 const aiPlayer = (name, symbol) => {
-  const getSymbol = () => symbol;
+  //const getSymbol = () => symbol;
 
   const getRandomAvailableCell = (board) => {
     const availableCells = [];
@@ -25,11 +24,11 @@ const aiPlayer = (name, symbol) => {
     do {
       index = getRandomAvailableCell(board);
     } while (board[index] !== "");
-    board[index] = getSymbol();
+    board[index] = symbol;
     return index;
   };
 
-  return { name, getSymbol: getSymbol, makeMove: makeMove };
+  return { name, symbol, makeMove };
 };
 
 // Module pattern to create game board
@@ -47,8 +46,8 @@ const gameBoard = (() => {
   // Button event listeners to select symbol and start the game
   const xButton = document.getElementById("xBtn");
   xButton.addEventListener("click", () => {
-    player1.getSymbol = () => "X";
-    aiPlay.getSymbol = () => "O";
+    player1.symbol = "X";
+    aiPlay.symbol = "O";
     currentPlayer = player1;
     playerSelectedSymbol = true;
     gameStarted = true;
@@ -57,8 +56,8 @@ const gameBoard = (() => {
 
   const oButton = document.getElementById("oBtn");
   oButton.addEventListener("click", () => {
-    player1.getSymbol = () => "O";
-    aiPlay.getSymbol = () => "X";
+    player1.symbol = "O";
+    aiPlay.symbol = "X";
     currentPlayer = player1;
     playerSelectedSymbol = true;
     gameStarted = true;
@@ -109,18 +108,15 @@ const gameBoard = (() => {
       messageContainer.classList.add("show");
       setTimeout(() => {
         messageContainer.classList.remove("show");
-      });
+      }, 7000);
     }
   };
 
-  const announceWinner = (currentPlayer) => {
-    const winnerSymbol = currentPlayer ? currentPlayer.getSymbol() : "";
+  const announceWinner = (winnerSymbol) => {
     const message = winnerSymbol
       ? ` ${currentPlayer.name} ${winnerSymbol} wins!`
       : "It's A Tie!";
-
-    resultDiv.innerHTML = message;
-    resultDiv.classList.add("show");
+    showMessage(message, Boolean(winnerSymbol));
     cells.forEach((cell) => {
       cell.disabled = true;
     });
@@ -128,20 +124,7 @@ const gameBoard = (() => {
     playerSelectedSymbol = false;
     setTimeout(() => {
       resultDiv.classList.remove("show");
-    });
-  };
-
-  const announceTie = () => {
-    resultDiv.innerHTML = "It's A Tie!";
-    resultDiv.classList.add("show");
-    cells.forEach((cell) => {
-      cell.disabled = true;
-    });
-    gameStarted = false;
-    playerSelectedSymbol = false;
-    setTimeout(() => {
-      resultDiv.classList.remove("show");
-    }, 4000);
+    }, 7000);
   };
 
   cells.forEach((cell, index) => {
@@ -154,8 +137,8 @@ const gameBoard = (() => {
         return;
       }
 
-      cell.innerHTML = currentPlayer.getSymbol();
-      board[index] = currentPlayer.getSymbol();
+      cell.innerHTML = currentPlayer.symbol;
+      board[index] = currentPlayer.symbol;
 
       if (checkWin()) {
         announceWinner(currentPlayer);
@@ -175,7 +158,9 @@ const gameBoard = (() => {
       if (currentPlayer === aiPlay && gameStarted) {
         currentPlayer = aiPlay;
         const aiMove = aiPlay.makeMove(board);
-        cells[aiMove].innerHTML = aiPlay.getSymbol();
+        const aiCells = cells[aiMove];
+        aiCells.innerHTML = aiPlay.symbol;
+        board[aiMove] = aiPlay.symbol;
         if (checkWin()) {
           announceWinner(currentPlayer);
           cells.forEach((cell) => {
